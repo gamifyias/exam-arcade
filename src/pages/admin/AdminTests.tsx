@@ -381,14 +381,14 @@ export default function AdminTests() {
                         <div>
                           <Label>Subject (Optional)</Label>
                           <Select
-                            value={formData.subject_id}
-                            onValueChange={v => setFormData({ ...formData, subject_id: v })}
+                            value={formData.subject_id || "all"}
+                            onValueChange={v => setFormData({ ...formData, subject_id: v === "all" ? "" : v })}
                           >
                             <SelectTrigger>
                               <SelectValue placeholder="All subjects" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="">All Subjects</SelectItem>
+                              <SelectItem value="all">All Subjects</SelectItem>
                               {subjects.map(s => (
                                 <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
                               ))}
