@@ -37,7 +37,7 @@ export function useAntiCheat(config: AntiCheatConfig) {
         attempt_id: attemptId,
         user_id: userId,
         violation_type: violationType,
-        violation_details: details || {},
+        violation_details: details ? JSON.parse(JSON.stringify(details)) : null,
       }]);
     } catch (error) {
       console.error('Failed to log violation:', error);
